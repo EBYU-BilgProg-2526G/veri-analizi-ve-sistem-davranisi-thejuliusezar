@@ -3,24 +3,26 @@
 CSV dosyasından sinyal verisi okuma yardımcı fonksiyonları
 """
 
+import csv 
+import numpy as np 
+
 def load_signal_csv(path):
-    """
-    CSV formatı:
-    t,x
-    0.0, 1.23
-    0.01, 1.10
-    ...
-
-    Parametre:
-        path (str): CSV dosya yolu
-
-    Dönen:
-        t : zaman vektörü
-        x : sinyal vektörü
-    """
-    # TODO:
-    # 1. csv modülünü kullan
-    # 2. dosyayı satır satır oku
-    # 3. t ve x listelerini doldur
-    # 4. numpy array olarak döndür
-    pass
+    with open(path, "r", encoding="utf-8") as f:
+        okuyucu = csv.reader(f)
+        
+        t_list = []
+        x_list = []
+        
+        
+        for i, j in okuyucu:
+        
+            try: 
+                t_list.append(float(i))
+                x_list.append(float(j))
+            except ValueError:
+                continue
+        
+    t = np.array(t_list)
+    x = np.array(x_list)
+    
+    return t, x 
