@@ -1,21 +1,16 @@
-# -*- coding: utf-8 -*-
-"""
-Grafik çizim fonksiyonları
-"""
+
+import matplotlib
+import matplotlib.pyplot as plt
 
 def plot_time(t, x_raw, x_filt, save_path):
-    """
-    Ham ve filtrelenmiş sinyali zaman domeninde çizer
+    
+    plt.plot(t, x_raw, label = "Ham")
+    plt.plot(t, x_filt, "r-", label = "Filtrelenmiş")
+    plt.title("Zaman-Sinyal Grafiği"),
+    plt.xlabel("Zaman")
+    plt.ylabel("Sinyal")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    plt.savefig("time_signal.png", dpi = 300)
 
-    Parametreler:
-        t        : zaman vektörü
-        x_raw   : ham sinyal
-        x_filt  : filtrelenmiş sinyal
-        save_path : kayıt edilecek dosya yolu
-    """
-    # TODO:
-    # matplotlib kullanarak:
-    # - iki sinyali aynı grafikte çiz
-    # - eksen isimleri ve başlık ekle
-    # - grafiği dosyaya kaydet
-    pass
